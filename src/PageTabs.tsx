@@ -427,8 +427,9 @@ export function useActiveTab(tabs: ITabInfo[]) {
         tab = await logseq.Editor.getPage(
           p.name ?? (p as BlockEntity)?.page.id
         );
-      } else {
-        tab = { name: getJournalsString(), uuid: undefined }
+        // HACK: temporary fix for issue #111
+        // } else {
+        //   tab = { name: getJournalsString(), uuid: undefined }
       }
     }
 
