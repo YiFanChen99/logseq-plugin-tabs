@@ -155,13 +155,12 @@ const Tabs = React.forwardRef<HTMLElement, TabsProps>(
           return (
             <div
               onClick={(e) => onClickTab(tab, e.shiftKey)}
+              onAuxClick={onClose}
               onDoubleClick={() => onPinTab(tab)}
               onContextMenu={(e) => {
                 e.preventDefault();
-                console.log(e);
-                // onAuxClick={/*onClose*/}
                 // TODO: show the same context menu like right-clicking the title?
-                console.log("Not implemented yet");
+                // console.log("Not implemented yet");
               }}
               key={[tab.originalName, tab.uuid].join("-")}
               data-active={isActive}
