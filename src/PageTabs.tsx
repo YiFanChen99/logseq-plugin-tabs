@@ -98,13 +98,6 @@ const Tabs = React.forwardRef<HTMLElement, TabsProps>(
       };
     }, []);
 
-    // Clean out link markup and internal block metadata from text shown in tab titles.
-    const cleanBlockTitle = (text: string): string => (
-      text
-        .replace(/\[([^\]]+)\]\([^\)]+\)/, "$1")
-        .replace(/\s+(id|background-color|collapsed):: .+/g, "")
-    )
-
     const debouncedSwap = useDebounceFn(onSwapTab, 0);
     const showTabs =
       showSingleTab ||
@@ -186,9 +179,9 @@ const Tabs = React.forwardRef<HTMLElement, TabsProps>(
               <span className="logseq-tab-title">
                 {tab.originalName ?? tab.name}{" "}
                 {isBlock(tab) && (
-                  <span title={cleanBlockTitle(tab.content)}>
+                  <span title={tab.content}>
                     <strong className="text-blue-600">•</strong>
-                    <span className="mx-1">{cleanBlockTitle(tab.content)}</span>
+                    <span className="mx-1">{tab.content}</span>
                   </span>
                 )}
               </span>
